@@ -1,13 +1,23 @@
-#常にTrue（正）でプログラムを繰り返し処理する
-while True:
-  # 入力をおうむ返しする
-  command = input('はなしかける>')
+bot_messages = {
+  'こんにちは': 'Hello',
+  'おはよう': 'Good Morning',
+  'ありがとう': 'Thanks',
+  'さようなら': 'Bye'
+}
 
-  # in演算子
-  if 'こんにちは' in command:
-      print('いいお天気ですね')
-  elif 'おしまい' in command:
-      print('さようなら')
+while True:
+  command = input('はなしかける>')
+  response = ''
+  for key in bot_messages:
+    if key in command:
+      response = bot_messages[key]
       break
-  else:
-     print(command) 
+
+  # bot_messagesにない文字列が入力された時の返答
+  if not response:
+    response = 'わからない'
+  print(response)
+ 
+  # whileループ終了
+  if 'さようなら' in command:
+    break
